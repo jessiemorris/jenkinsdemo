@@ -1,0 +1,6 @@
+node() {
+
+  stage('echo a thing') {
+    sh "echo 'a thing'
+  }
+}
