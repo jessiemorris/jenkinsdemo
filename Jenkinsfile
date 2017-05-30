@@ -1,7 +1,4 @@
 node() {
-    stage('Build with Gradle') {
-        sh "./gradlew"
-    }
     stage('Create Jobs') {
         pipelineDsl targets: [ 'jobs/Jenkinsfile', 'views/*.groovy' ].join('\n'),
                additionalClasspath: ['src/**/*.groovy', 'src/**/*.jar',
