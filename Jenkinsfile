@@ -1,11 +1,13 @@
-node() {
-    stage('Create Jobs') {
-        pipelineDsl targets: [ 'jobs/Jenkinsfile', 'views/*.groovy' ].join('\n'),
-               additionalClasspath: ['src/**/*.groovy', 'src/**/*.jar',
-                                     'lib/**/*.groovy', 'lib/**/*.jar'].join('\n'),
-              removedJobAction: 'DELETE',
-              removedViewAction: 'DELETE',
-              failOnMissingPlugin: true,
-              unstableOnDeprecation: true
+pipeline {
+    agent any
+    parameters {
+        string(name: 'Greeting', defaultValue: 'Hello', description: 'How should I greet the world?')
+    }
+    stages {
+        stage('Example') {
+            steps {
+                echo "${params.Greeting} World!"
+            }
+        }
     }
 }
