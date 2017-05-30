@@ -1,11 +1,4 @@
-def projectName = currentBuild.fullProjectName.split('/')[0].replaceFirst('_', '/')
-
 node() {
-    checkoutStage {
-        deleteDir()
-        label = "Checkout"
-        project = projectName
-    }
     stage('Build with Gradle') {
         sh "./gradlew"
     }
